@@ -1428,8 +1428,8 @@ a.contact-value:hover {
   width: 100%;
   height: 32px;
   position: relative;
-  margin-top: 3.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0px;
   overflow: hidden;
   border-bottom: 1px dashed var(--border-color); /* walks on a dashed line */
 }

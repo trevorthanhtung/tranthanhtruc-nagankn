@@ -164,6 +164,10 @@ export default function Contact({ lang }) {
         </div>
       </div>
 
+      <p className="copyright">
+        &copy; {new Date().getFullYear()} Tran Thanh Truc. {t.copyright_reserved} | {t.copyright_by} <a href="https://tranthanhtung-trevor.vercel.app/" target="_blank" rel="noopener noreferrer">thanhtungg</a>.
+      </p>
+
       {/* Whimsical walking black cat with 1/3 bobtail */}
       <div className="cat-track" aria-hidden="true">
         <svg className="walking-cat" viewBox="0 0 48 30" width="48" height="30">
@@ -193,10 +197,6 @@ export default function Contact({ lang }) {
           <circle cx="37" cy="11" r="0.75" fill="var(--accent-color)" />
         </svg>
       </div>
-
-      <p className="copyright">
-        &copy; {new Date().getFullYear()} Tran Thanh Truc. {t.copyright_reserved} | {t.copyright_by} <a href="https://tranthanhtung-trevor.vercel.app/" target="_blank" rel="noopener noreferrer">thanhtungg</a>.
-      </p>
     </footer>
   );
 }
