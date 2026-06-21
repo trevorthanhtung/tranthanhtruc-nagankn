@@ -11,51 +11,51 @@ export const translations = {
     hero: {
       greeting: "Xin chào, tôi là",
       name: "Trần Thanh Trúc",
-      subtitle: "Phiên Dịch Tiếng Nhật Ngành Lạnh Công Nghiệp & Cấp Đông Thủy Sản",
+      subtitle: "Phiên dịch tiếng Nhật ngành Lạnh công nghiệp & Cấp đông thủy sản",
       tagline: "Kết nối ngôn ngữ và kỹ thuật bằng sự chính xác, tận tâm và tinh thần cầu thị.",
       cta: "Khám phá chuyên môn"
     },
     about: {
-      title: "Về bản thân",
+      title: "Về tôi",
       bio1: "Tôi tốt nghiệp ngành Nhật Bản học tại Đại học Hoa Sen và từng được cử sang Nhật Bản làm việc theo chương trình trao đổi nhân sự. Với nền tảng ngôn ngữ vững chắc, tôi không chỉ định vị mình là một phiên dịch viên thuần túy, mà còn hướng tới vai trò cầu nối thương mại chuyên nghiệp trong ngành Lạnh công nghiệp & Điện lạnh thủy sản (Hệ thống cấp đông IQF, tủ đông tiếp xúc, kho cấp đông).",
-      bio2: "Dù chưa có nhiều năm kinh nghiệm làm việc tại các tập đoàn lớn, tôi tự tin vào khả năng tự học vượt trội, tinh thần trách nhiệm cao, và tư duy kỹ thuật nhạy bén. Tôi đã tự trang bị kiến thức nền tảng về chu trình lạnh công nghiệp, hệ thống máy nén và các thuật ngữ chuyên ngành để hỗ trợ tốt nhất cho các doanh nghiệp Nhật Bản tại Việt Nam."
+      bio2: "Dù là nhân sự trẻ, tôi tự tin vào khả năng tự học vượt trội, tinh thần trách nhiệm cao và tư duy kỹ thuật nhạy bén. Tôi đã tự trang bị kiến thức nền tảng về chu trình lạnh công nghiệp, hệ thống máy nén và các thuật ngữ chuyên ngành để hỗ trợ tốt nhất cho hoạt động của các doanh nghiệp Nhật Bản tại Việt Nam."
     },
     expertise: {
-      title: "Lĩnh Vực Chuyên Môn",
+      title: "Lĩnh vực chuyên môn",
       translation: {
-        title: "Phiên Dịch & Dịch Thuật Tiếng Nhật",
+        title: "Phiên dịch & Dịch thuật tiếng Nhật",
         desc: "Hỗ trợ biên dịch tài liệu kỹ thuật, hướng dẫn sử dụng thiết bị và phiên dịch các buổi họp thương mại, đàm phán giữa đối tác Nhật Bản và kỹ sư Việt Nam."
       },
       hvac: {
-        title: "Điện Lạnh Thủy Sản & Lạnh Công Nghiệp",
+        title: "Điện lạnh thủy sản & Lạnh công nghiệp",
         desc: "Hiểu biết về nguyên lý hoạt động của hệ thống cấp đông (IQF, tủ cấp đông tiếp xúc), kho lạnh bảo quản thủy hải sản, thiết kế hệ thống lạnh và khả năng trao đổi thông số bằng tiếng Nhật."
       }
     },
     timeline: {
-      title: "Hành Trình Chuyên Môn",
+      title: "Hành trình chuyên môn",
       items: [
         {
           year: "2020 - 2024",
           title: "Đại học Hoa Sen",
           sub: "Cử nhân Nhật Bản học",
-          desc: "Tốt nghiệp chuyên ngành Nhật Bản học. Rèn luyện kỹ năng dịch thuật và giao tiếp chuẩn Nhật."
+          desc: "Tốt nghiệp chuyên ngành Nhật Bản học. Rèn luyện kỹ năng dịch thuật chuyên sâu và giao tiếp chuẩn Nhật."
         },
         {
           year: "2024",
           title: "Công ty TNHH Điện lạnh Saigon (SAREE)",
           sub: "Thực tập sinh Biên phiên dịch tiếng Nhật",
-          desc: "Biên dịch tài liệu kỹ thuật thiết bị cấp đông thủy hải sản, quy trình công nghệ lạnh và hỗ trợ dịch thuật kỹ thuật."
+          desc: "Biên dịch tài liệu kỹ thuật thiết bị cấp đông thủy hải sản, quy trình công nghệ lạnh và hỗ trợ giao tiếp kỹ thuật tại nhà xưởng."
         },
         {
           year: "Tháng 07/2026",
           title: "Chương trình Trao đổi Nhân sự (SAREE x Hasegawa)",
           sub: "Phiên dịch viên Kỹ thuật & Trao đổi Công nghệ tại Nhật Bản",
-          desc: "Chuẩn bị tham gia chương trình trao đổi nhân sự giữa SAREE và đối tác Nhật Bản Hasegawa. Vai trò: Phiên dịch viên kỹ thuật và cầu nối truyền đạt quy trình sản xuất."
+          desc: "Chuẩn bị tham gia chương trình trao đổi nhân sự tại Nhật Bản. Vai trò: Phiên dịch viên kỹ thuật, hỗ trợ chuyển giao công nghệ và trao đổi quy trình sản xuất giữa SAREE và đối tác Hasegawa."
         }
       ]
     },
     skills: {
-      title: "Năng lực & Kỹ năng",
+      title: "Năng lực & kỹ năng",
       languages: "Ngôn ngữ",
       technical: "Kiến thức chuyên môn",
       soft: "Kỹ năng bổ trợ",
@@ -65,15 +65,15 @@ export const translations = {
         vi: "Tiếng Việt (Bản xứ)",
         hvac_terms: "Thuật ngữ Lạnh Công nghiệp & Thủy sản",
         cycle: "Chu trình lạnh & Nguyên lý cấp đông",
-        office: "Tin học văn phòng & Báo cáo",
+        office: "Tin học văn phòng & Báo cáo kỹ thuật",
         comms: "Giao tiếp đa văn hóa",
         adapt: "Khả năng thích ứng nhanh",
         detail: "Tỉ mỉ & Cẩn thận"
       }
     },
     contact: {
-      title: "Liên Hệ Hợp Tác",
-      greeting: "Rất mong được hợp tác cùng Quý công ty và Đối tác.",
+      title: "Liên hệ hợp tác",
+      greeting: "Rất mong được hợp tác cùng Quý công ty và đối tác.",
       closing: "Xin chân thành cảm ơn!",
       email: "Email liên hệ",
       phone: "Số điện thoại",
@@ -105,68 +105,68 @@ export const translations = {
     hero: {
       greeting: "Hello, I am",
       name: "Tran Thanh Truc",
-      subtitle: "Japanese Interpreter - Industrial & Marine Refrigeration",
+      subtitle: "Japanese Technical Interpreter - Industrial Refrigeration & Seafood Freezing",
       tagline: "Bridging languages and engineering with precision, dedication, and a growth mindset.",
       cta: "Explore Expertise"
     },
     about: {
       title: "About Me",
-      bio1: "I graduated with a major in Japanese Studies from Hoa Sen University and worked in Japan under a corporate personnel exchange program. With a solid linguistic foundation, I aim to be not just a translator, but a professional business bridge in the Industrial & Marine Refrigeration industry (seafood quick freezing, IQF, cold chain logistics).",
-      bio2: "Although a fresh graduate, I am highly confident in my self-learning capability, sense of responsibility, and technical intuition. I have independently studied industrial thermodynamic compression cycles, refrigerants, and freezing principles to assist Japanese businesses in Vietnam effectively."
+      bio1: "I graduated with a major in Japanese Studies from Hoa Sen University and worked in Japan under a corporate exchange program. With a solid linguistic foundation, I aim to be not just an interpreter, but a professional technical bridge in the Industrial Refrigeration & Seafood Freezing industry (IQF systems, contact freezers, and cold chain logistics).",
+      bio2: "As a recent graduate, I am highly motivated and confident in my rapid self-learning ability, strong sense of responsibility, and technical aptitude. I have independently studied industrial refrigeration cycles, compressor systems, and specialized terminology to best support Japanese enterprises in Vietnam."
     },
     expertise: {
       title: "Core Expertise",
       translation: {
-        title: "Japanese Translation & Interpretation",
-        desc: "Translating technical catalogs, manuals, and interpreting business meetings and technical negotiations between Japanese clients and local engineers."
+        title: "Japanese Translation & Technical Interpretation",
+        desc: "Translating technical documentation and equipment manuals; interpreting business meetings and technical discussions between Japanese partners and local engineers."
       },
       hvac: {
-        title: "Industrial & Seafood Freezing Tech",
-        desc: "Familiarity with quick-freezing systems (IQF, contact freezers), seafood storage cold rooms, industrial compressor loops, and advising technical parameters in Japanese."
+        title: "Industrial Refrigeration & Seafood Freezing",
+        desc: "Deep understanding of quick-freezing systems (IQF, contact freezers), seafood storage cold rooms, refrigeration cycles, and communicating technical specifications in Japanese."
       }
     },
     timeline: {
-      title: "Professional Timeline",
+      title: "Professional Journey",
       items: [
         {
           year: "2020 - 2024",
           title: "Hoa Sen University",
           sub: "Bachelor of Japanese Studies",
-          desc: "Specialized in Business Japanese. Developed professional translation and corporate communication skills."
+          desc: "Specialized in Business Japanese. Developed professional translation skills and business Japanese communication."
         },
         {
           year: "2024",
           title: "Saigon Refrigeration Co., Ltd (SAREE)",
           sub: "Japanese Translation & Interpretation Intern",
-          desc: "Translated technical manuals, refrigeration system specs, and assisted in technical communication for cooling plant projects."
+          desc: "Translated technical manuals for seafood freezing equipment and refrigeration specs, assisting in technical communication."
         },
         {
           year: "July 2026",
           title: "Personnel Exchange Program (SAREE x Hasegawa)",
           sub: "Technical Interpreter & Technology Exchange in Japan",
-          desc: "Preparing to join the exchange program between SAREE and Japanese partner Hasegawa in Japan. Role: Technical interpreter and bridge for manufacturing process exchange."
+          desc: "Preparing to participate in the personnel exchange program in Japan. Role: Technical interpreter, supporting technology transfer and manufacturing process exchange between SAREE and Japanese partner Hasegawa."
         }
       ]
     },
     skills: {
       title: "Skills & Competencies",
       languages: "Languages",
-      technical: "Technical Knowledge",
+      technical: "Technical Competencies",
       soft: "Soft Skills",
       items: {
         ja: "Japanese (JLPT N2)",
         en: "English (Professional Business)",
         vi: "Vietnamese (Native)",
-        hvac_terms: "Industrial & Seafood Freezing Terms",
-        cycle: "Industrial Refrigeration & Freezing Principles",
-        office: "MS Office & Professional Reporting",
+        hvac_terms: "Industrial Refrigeration & Seafood Freezing Terms",
+        cycle: "Refrigeration Cycles & Freezing Principles",
+        office: "Office Software & Technical Reporting",
         comms: "Cross-cultural Communication",
         adapt: "Rapid Adaptation",
         detail: "Attention to Detail"
       }
     },
     contact: {
-      title: "Contact & Collaboration",
+      title: "Collaboration & Contact",
       greeting: "I look forward to collaborating with your company and partners.",
       closing: "Thank you very much!",
       email: "Email Address",
@@ -199,24 +199,24 @@ export const translations = {
     hero: {
       greeting: "はじめまして、私は",
       name: "トラン・タイン・チュック",
-      subtitle: "日本語通訳・翻訳 ＆ 冷凍空調（HVAC）技術アシスタント",
+      subtitle: "日本語通訳・翻訳（産業冷凍 ＆ 水産凍結技術）",
       tagline: "正確さ、熱意、そして成長意欲をもって、言語と技術の架け橋となります。",
       cta: "専門分野を見る"
     },
     about: {
       title: "自己紹介",
-      bio1: "ホアセン大学日本学科を卒業し、企業の人材交流プログラムにより日本に派遣され、実務を経験しました。強固な言語的基礎を備え、単なる翻訳者にとどまらず、冷凍空調（HVAC）業界における日越ビジネスの専門的な架け橋となることを目指しています。",
-      bio2: "新卒ではありますが、優れた自主学習能力、強い責任感、そして技術的な勘には自信があります。冷凍サイクルの基礎知識や専門用語を自ら学び、ベトナムに進出する日本企業のビジネスを効果的にサポートする準備を整えています。"
+      bio1: "ホアセン大学日本学科を卒業し、企業の人材交流プログラムを通じて日本での実務を経験しました。強固な語学力を基礎に、単なる通訳者にとどまらず、産業用冷凍・水産凍結分野（IQFシステム、接触式凍結機、コールドチェーンなど）における日越ビジネスのプロフェッショナルな架け橋となることを目指しています。",
+      bio2: "新卒ではありますが、優れた自主学習能力、強い責任感、および技術的センスには自信があります。冷凍サイクル、圧縮機システム、業界専門用語などの基礎知識を自主的に習得しており、ベトナムに進出する日本企業の技術コミュニケーションとビジネス展開を効果的にサポートいたします。"
     },
     expertise: {
       title: "専門分野",
       translation: {
-        title: "日本語通訳・翻訳業務",
-        desc: "技術資料や取扱説明書の翻訳、並びに日本人顧客とベトナム人技術者との間のビジネス会議や技術交渉の通訳サポート。"
+        title: "日本語翻訳・技術通訳",
+        desc: "技術資料や設備取扱説明書の翻訳、および日本側のパートナーとベトナム人技術者との技術打合せや商業交渉の通訳サポート。"
       },
       hvac: {
-        title: "冷凍空調（HVAC）技術サポート",
-        desc: "冷凍サイクルの原理、圧縮機・凝縮器・蒸発器の構造を理解し、日本語で製品仕様や図面の対照説明を行う業務。"
+        title: "産業用冷凍・水産凍結技術",
+        desc: "急速凍結システム（IQF、接触式凍結機）、水産物保存用クリーンコールドルーム、冷凍サイクル原理の理解に基づき、日本語で技術仕様や図面の対照説明を行う実務能力。"
       }
     },
     timeline: {
@@ -232,28 +232,28 @@ export const translations = {
           year: "2024年",
           title: "サイゴン冷凍株式会社 (SAREE)",
           sub: "日本語翻訳・通訳インターン",
-          desc: "水産冷凍・冷凍システムに関する技術資料の翻訳、および越日技術通訳サポートの実務を経験。"
+          desc: "水産冷凍設備や冷凍システムに関する技術マニュアルの翻訳、および日越技術コミュニケーションのサポート業務を経験。"
         },
         {
           year: "2026年7月",
           title: "人材交流・技術研修プログラム (SAREE × ハセガワ)",
           sub: "日本派遣 技術通訳 ＆ 技術交流",
-          desc: "SAREEとハセガワの提携プログラムに基づき、日本へ派遣予定。役割：技術通訳および日越間の技術・製造プロセス交流の架け橋。"
+          desc: "SAREEと日本のパートナー企業であるハセガワとの人材交流プログラムに基づき、日本へ派遣予定。役割：技術通訳、および技術・製造プロセスの共同交換の架け橋。"
         }
       ]
     },
     skills: {
       title: "スキル・能力",
       languages: "語学力",
-      technical: "専門知識",
+      technical: "専門技術分野",
       soft: "強み",
       items: {
         ja: "日本語 (JLPT N2)",
         en: "英語 (ビジネス会話レベル)",
-        vi: "ベトnamese (母国語)",
-        hvac_terms: "HVAC業界技術用語",
-        cycle: "冷凍サイクル・熱力学原理",
-        office: "MS Office・報告書作成",
+        vi: "ベトナム語 (母国語)",
+        hvac_terms: "産業冷凍・水産凍結技術用語",
+        cycle: "冷凍サイクル・凍結プロセス原理",
+        office: "事務ソフト・技術レポート作成",
         comms: "異文化間コミュニケーション",
         adapt: "素早い適応力",
         detail: "几帳面・丁寧な作業"
