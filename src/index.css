@@ -1427,29 +1427,42 @@ a.contact-value:hover {
 /* Whimsical footer walking cat styling */
 .cat-track {
   width: 100vw;
-  height: 32px;
+  height: 48px;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   border-bottom: 3px solid var(--border-color); /* Walks on a solid ground line at the absolute bottom */
 }
 
 .walking-cat {
   position: absolute;
-  bottom: 0;
+  bottom: -1px; /* aligns legs perfectly on the ground line (since legs end at y=14 of 16 grid scaled 2x) */
   color: #1a1a1e; /* charcoal black cat */
   animation: walkAcross 30s linear infinite; /* Walk slowly (30s) */
   transition: filter var(--transition-speed);
   /* Soft outline & green eye glow for dark theme, adjusted in dark mode */
   filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.05));
+  /* Ensure pixel rendering remains crisp and sharp */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .light-theme .walking-cat {
-  color: #1a1a1e;
-  filter: none;
+  color: #1c1c21; /* slightly softer charcoal black */
+  /* Flat offset 1px shadow for crisp retro pixel-art aesthetic on paper background */
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.12));
+}
+
+.cat-eye {
+  fill: #3ad764; /* Vibrant bamboo green eye for dark mode */
+  transition: fill var(--transition-speed);
+}
+
+.light-theme .cat-eye {
+  fill: #27ae60; /* Rich contrast green eye for light mode */
 }
 
 /* Subtle glow for dark theme so the black cat stands out against dark sumi background */
@@ -1458,46 +1471,119 @@ html:not(.light-theme) .walking-cat {
           drop-shadow(0px 0px 3.5px rgba(71, 152, 101, 0.4));
 }
 
-/* Leg swing animations (slowed down to 0.8s to match 30s walk speed) */
-.leg-back-1 {
-  transform-origin: 18px 21px;
-  animation: legSwing 0.8s ease-in-out infinite alternate;
-}
-.leg-back-2 {
-  transform-origin: 21px 21px;
-  animation: legSwing 0.8s ease-in-out infinite alternate-reverse;
-}
-.leg-front-1 {
-  transform-origin: 30px 21px;
-  animation: legSwing 0.8s ease-in-out infinite alternate-reverse;
-}
-.leg-front-2 {
-  transform-origin: 33px 21px;
-  animation: legSwing 0.8s ease-in-out infinite alternate;
+/* Pixel art frame animations (discrete step cycles for legs) */
+.pixel-leg {
+  opacity: 0; /* Hidden by default */
 }
 
-@keyframes legSwing {
-  0% {
-    transform: rotate(-18deg);
-  }
-  100% {
-    transform: rotate(18deg);
-  }
+.tail-frame-b {
+  opacity: 0; /* Hidden by default */
 }
 
-/* 1/3 Bobtail wiggle (slowed to 0.8s) */
-.cat-tail {
-  transform-origin: 16px 18px;
-  animation: tailWasp 0.8s ease-in-out infinite alternate;
+/* Leg cycles for normal walking */
+.walking-cat:not(.scared-run) .leg-frame-1 {
+  animation: opacityCycle1 1.2s steps(1) infinite;
+}
+.walking-cat:not(.scared-run) .leg-frame-2 {
+  animation: opacityCycle2 1.2s steps(1) infinite;
+}
+.walking-cat:not(.scared-run) .leg-frame-3 {
+  animation: opacityCycle3 1.2s steps(1) infinite;
+}
+.walking-cat:not(.scared-run) .leg-frame-4 {
+  animation: opacityCycle4 1.2s steps(1) infinite;
 }
 
-@keyframes tailWasp {
-  0% {
-    transform: rotate(-8deg);
-  }
-  100% {
-    transform: rotate(12deg);
-  }
+/* Tail cycles for normal walking */
+.walking-cat:not(.scared-run) .tail-frame-a {
+  animation: tailCycleA 0.8s steps(1) infinite;
+}
+.walking-cat:not(.scared-run) .tail-frame-b {
+  animation: tailCycleB 0.8s steps(1) infinite;
+}
+
+@keyframes opacityCycle1 {
+  0%, 24.99% { opacity: 1; }
+  25%, 100% { opacity: 0; }
+}
+@keyframes opacityCycle2 {
+  0%, 24.99% { opacity: 0; }
+  25%, 49.99% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes opacityCycle3 {
+  0%, 49.99% { opacity: 0; }
+  50%, 74.99% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+@keyframes opacityCycle4 {
+  0%, 74.99% { opacity: 0; }
+  75%, 100% { opacity: 1; }
+}
+
+@keyframes tailCycleA {
+  0%, 49.99% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes tailCycleB {
+  0%, 49.99% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+
+/* Scared cat easter egg styling */
+.scared-run {
+  animation: none !important;
+}
+
+/* Fast leg cycles when running */
+.scared-run .leg-frame-1 {
+  animation: opacityCycle1 0.24s steps(1) infinite !important;
+}
+.scared-run .leg-frame-2 {
+  animation: opacityCycle2 0.24s steps(1) infinite !important;
+}
+.scared-run .leg-frame-3 {
+  animation: opacityCycle3 0.24s steps(1) infinite !important;
+}
+.scared-run .leg-frame-4 {
+  animation: opacityCycle4 0.24s steps(1) infinite !important;
+}
+
+/* Fast tail wiggles when running */
+.scared-run .tail-frame-a {
+  animation: tailCycleA 0.16s steps(1) infinite !important;
+}
+.scared-run .tail-frame-b {
+  animation: tailCycleB 0.16s steps(1) infinite !important;
+}
+
+.cat-scared-startled {
+  animation: shiver 0.08s infinite alternate !important;
+}
+
+/* Shift position exact pixels without rotation to preserve crisp pixels */
+@keyframes shiver {
+  0% { transform: scaleX(var(--scale-dir, 1)) translate(-1px, -12px); }
+  100% { transform: scaleX(var(--scale-dir, 1)) translate(1px, -12px); }
+}
+
+.scared-exclamation {
+  position: absolute;
+  top: -16px;
+  color: #ff3366;
+  font-size: 22px;
+  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  animation: exclamationPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  z-index: 10;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(255, 51, 102, 0.4);
+}
+
+@keyframes exclamationPop {
+  0% { opacity: 0; transform: scale(0) translateY(8px); }
+  50% { opacity: 1; transform: scale(1.4) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 /* Walk back and forth across full viewport width */
@@ -1523,3 +1609,6 @@ html:not(.light-theme) .walking-cat {
     transform: scaleX(1);
   }
 }
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { translations } from '../translations';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { MailIcon, CallIcon, Location01Icon, SentIcon } from '@hugeicons/core-free-icons';
@@ -9,6 +9,59 @@ export default function Contact({ lang }) {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Easter egg states for startled/running cat
+  const [isScared, setIsScared] = useState(false);
+  const [scaredState, setScaredState] = useState(''); // 'startled' | 'running' | 'hidden'
+  const [scaredLeft, setScaredLeft] = useState(0);
+  const [facingLeft, setFacingLeft] = useState(false);
+  const [catDelay, setCatDelay] = useState('0s');
+
+  const catRef = useRef(null);
+  const trackRef = useRef(null);
+
+  const handleCatClick = () => {
+    if (isScared) return; // Prevent double clicks during animation
+
+    const catEl = catRef.current;
+    const trackEl = trackRef.current;
+    if (!catEl || !trackEl) return;
+
+    // Get current horizontal position relative to track
+    const rect = catEl.getBoundingClientRect();
+    const trackRect = trackEl.getBoundingClientRect();
+    const currentLeft = rect.left - trackRect.left;
+
+    // Detect direction from CSS transform matrix scaleX
+    const style = window.getComputedStyle(catEl);
+    const matrix = new DOMMatrix(style.transform);
+    const isFacingLeft = matrix.a < 0;
+
+    setScaredLeft(currentLeft);
+    setFacingLeft(isFacingLeft);
+    setIsScared(true);
+    setScaredState('startled');
+    setCatDelay(isFacingLeft ? '0s' : '-15s');
+
+    // 1. Shiver in place for 600ms, then run offscreen
+    setTimeout(() => {
+      setScaredState('running');
+      // target off-screen left or right depending on face direction
+      const targetLeft = isFacingLeft ? -60 : trackRect.width + 10;
+      setScaredLeft(targetLeft);
+    }, 600);
+
+    // 2. Hide when off-screen
+    setTimeout(() => {
+      setScaredState('hidden');
+    }, 1400);
+
+    // 3. Reappear and resume normal walking loop after 5 seconds of hiding (6.4s total)
+    setTimeout(() => {
+      setIsScared(false);
+      setScaredState('');
+    }, 6400);
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -169,32 +222,54 @@ export default function Contact({ lang }) {
       </p>
 
       {/* Whimsical walking black cat with 1/3 bobtail */}
-      <div className="cat-track" aria-hidden="true">
-        <svg className="walking-cat" viewBox="0 0 48 30" width="48" height="30">
-          {/* Tail (1/3 length bobtail, wiggling) */}
-          <path className="cat-tail" d="M16 18 Q13 15 15 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <div ref={trackRef} className="cat-track" aria-hidden="true">
+        {scaredState === 'startled' && (
+          <span className="scared-exclamation" style={{
+            left: `${scaredLeft + (facingLeft ? 10 : 32)}px`
+          }}>
+            !
+          </span>
+        )}
+        <svg 
+          ref={catRef}
+          onClick={handleCatClick}
+          className={`walking-cat ${isScared ? 'scared-run' : ''} ${scaredState === 'startled' ? 'cat-scared-startled' : ''}`}
+          viewBox="0 0 24 16" 
+          width="48" 
+          height="32"
+          style={{
+            cursor: isScared ? 'default' : 'pointer',
+            left: isScared ? `${scaredLeft}px` : undefined,
+            opacity: scaredState === 'hidden' ? 0 : 1,
+            transition: scaredState === 'running' ? 'left 0.8s cubic-bezier(0.5, 0, 1, 1)' : 'none',
+            '--scale-dir': facingLeft ? -1 : 1,
+            transform: (isScared && scaredState !== 'startled') ? `scaleX(${facingLeft ? -1 : 1})` : undefined,
+            animation: isScared ? 'none' : undefined,
+            animationDelay: isScared ? undefined : catDelay
+          }}
+        >
+          {/* Tail Frame A (Fluffy 1/3 bobtail) */}
+          <path className="cat-tail tail-frame-a" d="M 6 6 h 1 v 1 h -1 z M 5 4 h 2 v 2 h -2 z" fill="currentColor" />
+          {/* Tail Frame B (Wiggled bobtail) */}
+          <path className="cat-tail tail-frame-b" d="M 5 6 h 1 v 1 h -1 z M 4 4 h 2 v 2 h -2 z" fill="currentColor" />
+
+          {/* Body, neck, head, ears (Static Pixel Art) */}
+          <path d="M 15 2 h 1 v 2 h -1 z M 19 2 h 1 v 2 h -1 z M 15 4 h 5 v 4 h -5 z M 15 5 h 2 v 1 h -2 z M 7 6 h 10 v 5 h -10 z" fill="currentColor" />
           
-          {/* Back Leg 1 */}
-          <line className="cat-leg leg-back-1" x1="18" y1="21" x2="16" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Back Leg 2 */}
-          <line className="cat-leg leg-back-2" x1="21" y1="21" x2="23" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Walking legs frame 1 */}
+          <path className="pixel-leg leg-frame-1" d="M 14 11 h 1 v 3 h -1 z M 16 11 h 1 v 3 h -1 z M 8 11 h 1 v 3 h -1 z M 10 11 h 1 v 3 h -1 z" fill="currentColor" />
           
-          {/* Body */}
-          <ellipse cx="26" cy="18" rx="10" ry="6" fill="currentColor" />
+          {/* Walking legs frame 2 */}
+          <path className="pixel-leg leg-frame-2" d="M 15 11 h 1 v 2 h -1 z M 16 13 h 1 v 1 h -1 z M 13 11 h 1 v 2 h -1 z M 12 13 h 1 v 1 h -1 z M 9 11 h 1 v 2 h -1 z M 10 13 h 1 v 1 h -1 z M 7 11 h 1 v 2 h -1 z M 6 13 h 1 v 1 h -1 z" fill="currentColor" />
           
-          {/* Front Leg 1 */}
-          <line className="cat-leg leg-front-1" x1="30" y1="21" x2="28" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-          {/* Front Leg 2 */}
-          <line className="cat-leg leg-front-2" x1="33" y1="21" x2="35" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Walking legs frame 3 */}
+          <path className="pixel-leg leg-frame-3" d="M 14 11 h 1 v 3 h -1 z M 16 11 h 1 v 3 h -1 z M 8 11 h 1 v 3 h -1 z M 10 11 h 1 v 3 h -1 z" fill="currentColor" />
           
-          {/* Head */}
-          <circle cx="35" cy="12" r="5" fill="currentColor" />
-          {/* Ears */}
-          <polygon points="31,9 33,4 35,8" fill="currentColor" />
-          <polygon points="39,9 37,4 35,8" fill="currentColor" />
+          {/* Walking legs frame 4 */}
+          <path className="pixel-leg leg-frame-4" d="M 13 11 h 1 v 2 h -1 z M 12 13 h 1 v 1 h -1 z M 15 11 h 1 v 2 h -1 z M 16 13 h 1 v 1 h -1 z M 7 11 h 1 v 2 h -1 z M 6 13 h 1 v 1 h -1 z M 9 11 h 1 v 2 h -1 z M 10 13 h 1 v 1 h -1 z" fill="currentColor" />
           
-          {/* Eye (glowing bamboo green) */}
-          <circle cx="37" cy="11" r="0.75" fill="var(--accent-color)" />
+          {/* Eye (Single pixel glowing green) */}
+          <rect className="cat-eye" x="18" y="5" width="1" height="1" />
         </svg>
       </div>
     </footer>
