@@ -143,10 +143,10 @@ export default function Hero({ lang }) {
               return (
                 <React.Fragment key={segIdx}>
                   <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
-                    {chars.map((char) => {
+                    {chars.map((char, charIdx) => {
+                      const isLast = (segIdx === segments.length - 1) && (charIdx === chars.length - 1);
                       const currentIdx = charGlobalIdx;
                       charGlobalIdx++;
-                      const isLast = currentIdx === nameChars.length - 1;
 
                       if (isLast) {
                         return (
@@ -188,8 +188,7 @@ export default function Hero({ lang }) {
                         </span>
                       );
                     })}
-                  </span>
-                  {segment.afterSpace && <span style={{ display: 'inline' }}> </span>}
+                  </span>{segment.afterSpace && ' '}
                 </React.Fragment>
               );
             });
