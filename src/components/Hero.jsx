@@ -3,6 +3,31 @@ import { translations } from '../translations';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 
+function getNameSegments(name) {
+  // If the name has spaces, split by space (and keep spaces between words)
+  if (name.includes(' ')) {
+    return name.split(' ').map((word, idx, arr) => {
+      return {
+        text: word,
+        isSeparator: false,
+        afterSpace: idx < arr.length - 1
+      };
+    });
+  }
+  // If Japanese, split by the interpunct '・' and keep it
+  if (name.includes('・')) {
+    return name.split('・').map((part, idx, arr) => {
+      return {
+        text: part + (idx < arr.length - 1 ? '・' : ''),
+        isSeparator: false,
+        afterSpace: false
+      };
+    });
+  }
+  // Fallback
+  return [{ text: name, isSeparator: false, afterSpace: false }];
+}
+
 export default function Hero({ lang }) {
   const t = translations[lang].hero;
   const nameChars = Array.from(t.name);
@@ -110,49 +135,63 @@ export default function Hero({ lang }) {
       <div className="hero-content">
         <div className="hero-greet">{t.greeting}</div>
         <h1 className="hero-name">
-          {nameChars.map((char, index) => {
-            if (index === lastCharIndex) {
+          {(() => {
+            const segments = getNameSegments(t.name);
+            let charGlobalIdx = 0;
+            return segments.map((segment, segIdx) => {
+              const chars = Array.from(segment.text);
               return (
-                <span key={index} style={{ display: 'inline-flex', alignItems: 'baseline', whiteSpace: 'nowrap' }}>
-                  <span 
-                    className="calligraphy-char" 
-                    style={{ animationDelay: `${0.2 + index * 0.08}s` }}
-                  >
-                    {char}
-                  </span>
-                  {/* Custom red hanko stamp (竹 - Take / Bamboo) */}
-                  <span 
-                    className="hanko-stamp" 
-                    title="竹 (Trúc / Bamboo)"
-                    style={{ 
-                      animation: 'hankoReveal 0.5s ease-out forwards, hankoGlow 2.5s ease-in-out infinite alternate',
-                      animationDelay: `${hankoStartDelay}s, ${hankoGlowDelay}s`,
-                      opacity: 0
-                    }}
-                  >
-                    <svg viewBox="0 0 40 40" width="36" height="36">
-                      <rect x="2" y="2" width="36" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="3" />
-                      <text x="50%" y="58%" dominantBaseline="middle" textAnchor="middle" fontSize="22" fontFamily="var(--font-display)" fontWeight="900" fill="currentColor">
-                        竹
-                      </text>
-                    </svg>
-                  </span>
+                <span key={segIdx} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+                  {chars.map((char) => {
+                    const currentIdx = charGlobalIdx;
+                    charGlobalIdx++;
+                    const isLast = currentIdx === nameChars.length - 1;
+
+                    if (isLast) {
+                      return (
+                        <span key={currentIdx} style={{ display: 'inline-flex', alignItems: 'baseline', whiteSpace: 'nowrap' }}>
+                          <span 
+                            className="calligraphy-char" 
+                            style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
+                          >
+                            {char}
+                          </span>
+                          {/* Custom red hanko stamp (竹 - Take / Bamboo) */}
+                          <span 
+                            className="hanko-stamp" 
+                            title="竹 (Trúc / Bamboo)"
+                            style={{ 
+                              animation: 'hankoReveal 0.5s ease-out forwards, hankoGlow 2.5s ease-in-out infinite alternate',
+                              animationDelay: `${hankoStartDelay}s, ${hankoGlowDelay}s`,
+                              opacity: 0
+                            }}
+                          >
+                            <svg viewBox="0 0 40 40" width="36" height="36">
+                              <rect x="2" y="2" width="36" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="3" />
+                              <text x="50%" y="58%" dominantBaseline="middle" textAnchor="middle" fontSize="22" fontFamily="var(--font-display)" fontWeight="900" fill="currentColor">
+                                竹
+                              </text>
+                            </svg>
+                          </span>
+                        </span>
+                      );
+                    }
+
+                    return (
+                      <span 
+                        key={currentIdx} 
+                        className="calligraphy-char" 
+                        style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
+                      >
+                        {char}
+                      </span>
+                    );
+                  })}
+                  {segment.afterSpace && <span style={{ display: 'inline' }}> </span>}
                 </span>
               );
-            }
-            if (char === ' ') {
-              return <span key={index} style={{ display: 'inline' }}> </span>;
-            }
-            return (
-              <span 
-                key={index} 
-                className="calligraphy-char" 
-                style={{ animationDelay: `${0.2 + index * 0.08}s` }}
-              >
-                {char}
-              </span>
-            );
-          })}
+            });
+          })()}
         </h1>
         <h2 className="hero-sub">{t.subtitle}</h2>
         <p className="hero-tagline">{t.tagline}</p>
