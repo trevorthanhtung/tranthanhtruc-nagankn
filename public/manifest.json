@@ -1,0 +1,17 @@
+{
+  "name": "Hồ sơ năng lực | Trần Thanh Trúc",
+  "short_name": "Thanh Trúc Portfolio",
+  "description": "Trang thông tin giới thiệu bản thân và năng lực của Trần Thanh Trúc - Cử nhân Nhật Bản học chuyên ngành HVAC/Điện lạnh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F161C",
+  "theme_color": "#0F161C",
+  "icons": [
+    {
+      "src": "/favicon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}
