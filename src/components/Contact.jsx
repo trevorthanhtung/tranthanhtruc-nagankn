@@ -164,6 +164,36 @@ export default function Contact({ lang }) {
         </div>
       </div>
 
+      {/* Whimsical walking black cat with 1/3 bobtail */}
+      <div className="cat-track" aria-hidden="true">
+        <svg className="walking-cat" viewBox="0 0 48 30" width="48" height="30">
+          {/* Tail (1/3 length bobtail, wiggling) */}
+          <path className="cat-tail" d="M16 18 Q13 15 15 12" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          
+          {/* Back Leg 1 */}
+          <line className="cat-leg leg-back-1" x1="18" y1="21" x2="16" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Back Leg 2 */}
+          <line className="cat-leg leg-back-2" x1="21" y1="21" x2="23" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          
+          {/* Body */}
+          <ellipse cx="26" cy="18" rx="10" ry="6" fill="currentColor" />
+          
+          {/* Front Leg 1 */}
+          <line className="cat-leg leg-front-1" x1="30" y1="21" x2="28" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          {/* Front Leg 2 */}
+          <line className="cat-leg leg-front-2" x1="33" y1="21" x2="35" y2="28" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+          
+          {/* Head */}
+          <circle cx="35" cy="12" r="5" fill="currentColor" />
+          {/* Ears */}
+          <polygon points="31,9 33,4 35,8" fill="currentColor" />
+          <polygon points="39,9 37,4 35,8" fill="currentColor" />
+          
+          {/* Eye (glowing bamboo green) */}
+          <circle cx="37" cy="11" r="0.75" fill="var(--accent-color)" />
+        </svg>
+      </div>
+
       <p className="copyright">
         &copy; {new Date().getFullYear()} Tran Thanh Truc. {t.copyright_reserved} | {t.copyright_by} <a href="https://tranthanhtung-trevor.vercel.app/" target="_blank" rel="noopener noreferrer">thanhtungg</a>.
       </p>
