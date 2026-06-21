@@ -141,54 +141,56 @@ export default function Hero({ lang }) {
             return segments.map((segment, segIdx) => {
               const chars = Array.from(segment.text);
               return (
-                <span key={segIdx} style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
-                  {chars.map((char) => {
-                    const currentIdx = charGlobalIdx;
-                    charGlobalIdx++;
-                    const isLast = currentIdx === nameChars.length - 1;
+                <React.Fragment key={segIdx}>
+                  <span style={{ display: 'inline-block', whiteSpace: 'nowrap' }}>
+                    {chars.map((char) => {
+                      const currentIdx = charGlobalIdx;
+                      charGlobalIdx++;
+                      const isLast = currentIdx === nameChars.length - 1;
 
-                    if (isLast) {
+                      if (isLast) {
+                        return (
+                          <span key={currentIdx} style={{ display: 'inline-flex', alignItems: 'baseline', whiteSpace: 'nowrap' }}>
+                            <span 
+                              className="calligraphy-char" 
+                              style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
+                            >
+                              {char}
+                            </span>
+                            {/* Custom red hanko stamp (竹 - Take / Bamboo) */}
+                            <span 
+                              className="hanko-stamp" 
+                              title="竹 (Trúc / Bamboo)"
+                              style={{ 
+                                animation: 'hankoReveal 0.5s ease-out forwards, hankoGlow 2.5s ease-in-out infinite alternate',
+                                animationDelay: `${hankoStartDelay}s, ${hankoGlowDelay}s`,
+                                opacity: 0
+                              }}
+                            >
+                              <svg viewBox="0 0 40 40" width="36" height="36">
+                                <rect x="2" y="2" width="36" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="3" />
+                                <text x="50%" y="58%" dominantBaseline="middle" textAnchor="middle" fontSize="22" fontFamily="var(--font-display)" fontWeight="900" fill="currentColor">
+                                  竹
+                                </text>
+                              </svg>
+                            </span>
+                          </span>
+                        );
+                      }
+
                       return (
-                        <span key={currentIdx} style={{ display: 'inline-flex', alignItems: 'baseline', whiteSpace: 'nowrap' }}>
-                          <span 
-                            className="calligraphy-char" 
-                            style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
-                          >
-                            {char}
-                          </span>
-                          {/* Custom red hanko stamp (竹 - Take / Bamboo) */}
-                          <span 
-                            className="hanko-stamp" 
-                            title="竹 (Trúc / Bamboo)"
-                            style={{ 
-                              animation: 'hankoReveal 0.5s ease-out forwards, hankoGlow 2.5s ease-in-out infinite alternate',
-                              animationDelay: `${hankoStartDelay}s, ${hankoGlowDelay}s`,
-                              opacity: 0
-                            }}
-                          >
-                            <svg viewBox="0 0 40 40" width="36" height="36">
-                              <rect x="2" y="2" width="36" height="36" rx="2" fill="none" stroke="currentColor" strokeWidth="3" />
-                              <text x="50%" y="58%" dominantBaseline="middle" textAnchor="middle" fontSize="22" fontFamily="var(--font-display)" fontWeight="900" fill="currentColor">
-                                竹
-                              </text>
-                            </svg>
-                          </span>
+                        <span 
+                          key={currentIdx} 
+                          className="calligraphy-char" 
+                          style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
+                        >
+                          {char}
                         </span>
                       );
-                    }
-
-                    return (
-                      <span 
-                        key={currentIdx} 
-                        className="calligraphy-char" 
-                        style={{ animationDelay: `${0.2 + currentIdx * 0.08}s` }}
-                      >
-                        {char}
-                      </span>
-                    );
-                  })}
+                    })}
+                  </span>
                   {segment.afterSpace && <span style={{ display: 'inline' }}> </span>}
-                </span>
+                </React.Fragment>
               );
             });
           })()}
