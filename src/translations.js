@@ -198,7 +198,7 @@ export const translations = {
     },
     hero: {
       greeting: "はじめまして、私は",
-      name: "トラン・タイン・チュック",
+      name: "トラン・タイン・ツック",
       subtitle: "日本語通訳・翻訳（産業冷凍 ＆ 水産凍結技術）",
       tagline: "正確さ、熱意、そして成長意欲をもって、言語と技術の架け橋となります。",
       cta: "専門分野を見る"
