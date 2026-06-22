@@ -192,30 +192,44 @@ section:last-of-type {
   border-bottom: none;
 }
 
-/* Nav styles */
+/* Nav styles (Floating Pill Dock - 2027 Trend) */
 .navbar {
   position: sticky;
-  top: 0;
+  top: 1.25rem;
   z-index: 100;
-  background-color: rgba(15, 22, 28, 0.85);
+  max-width: calc(var(--max-width) - 4rem); /* Align with content width 836px */
+  width: calc(100% - 4rem);
+  margin: 1.25rem auto 0 auto;
+  background-color: rgba(24, 38, 48, 0.65); /* Elegant translucent sumi dark glass */
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0;
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px; /* Pill-shaped dock */
+  padding: 0.6rem 1.5rem;
   transition: background-color var(--transition-speed) var(--transition-easing),
               border-color var(--transition-speed) var(--transition-easing),
-              transform 0.45s var(--transition-easing);
+              transform 0.45s var(--transition-easing),
+              box-shadow var(--transition-speed) var(--transition-easing),
+              top var(--transition-speed) var(--transition-easing);
   will-change: transform;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .navbar.hidden {
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - 2.5rem)); /* Push fully out including top margin */
 }
 
 .light-theme .navbar {
-  background-color: rgba(245, 247, 248, 0.85);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 }
 
-.nav-container {
+.navbar .nav-container {
+  width: 100%;
+  padding: 0;
+  max-width: none;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1281,7 +1295,15 @@ a.contact-value:hover {
     padding-right: 1.25rem;
   }
   .navbar {
-    padding: 0.6rem 0;
+    top: 1rem;
+    width: calc(100% - 2rem);
+    max-width: calc(100% - 2rem);
+    margin: 1rem auto 0 auto;
+    padding: 0.5rem 1.25rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+  }
+  .navbar.hidden {
+    transform: translateY(calc(-100% - 2rem)); /* Push fully out including top margin on mobile */
   }
   .logo {
     font-size: 1.1rem;
