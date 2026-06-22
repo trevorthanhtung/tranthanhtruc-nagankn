@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations } from '../translations';
 
 export default function Skills({ lang }) {

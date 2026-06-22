@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { translations } from '../translations';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { MailIcon, CallIcon, Location01Icon, SentIcon } from '@hugeicons/core-free-icons';

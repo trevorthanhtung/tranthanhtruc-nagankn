@@ -31,7 +31,6 @@ function getNameSegments(name) {
 export default function Hero({ lang }) {
   const t = translations[lang].hero;
   const nameChars = Array.from(t.name);
-  const lastCharIndex = nameChars.length - 1;
   const hankoStartDelay = 0.2 + nameChars.length * 0.08 + 0.2;
   const hankoGlowDelay = hankoStartDelay + 0.5;
 

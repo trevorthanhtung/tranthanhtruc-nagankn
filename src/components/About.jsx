@@ -1,4 +1,3 @@
-import React from 'react';
 import { translations } from '../translations';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { UserIcon } from '@hugeicons/core-free-icons';
